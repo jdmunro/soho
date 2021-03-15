@@ -48,6 +48,12 @@
 
   <link rel="shortcut icon" href="/favicon.png">
 
+  {{ if .Params.canonicalUrl }}
+  <link rel="canonical" href="{{ .Params.canonicalUrl }}">
+  {{ else }}
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ end }}
+
   <!-- RSS -->
   {{ range .AlternativeOutputFormats -}}
     {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}

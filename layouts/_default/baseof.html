@@ -35,16 +35,15 @@
         rel="stylesheet"
         href="{{ `css/hyde.css` | relURL }}">
 
+  <link type="text/css"
+        rel="stylesheet"
+        href="{{ `css/fontello.css` | relURL }}">
+
   {{ partial "theme-color.html" . }}
 
   {{ range $.Site.Params.customCss -}}
   <link type="text/css" rel="stylesheet" href="{{ . | relURL }}">
   {{- end}}
-
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
-        crossorigin="anonymous" />
 
   <link rel="apple-touch-icon-precomposed"
         sizes="144x144"
@@ -71,10 +70,6 @@
   </main>
 
   {{ partial "footer.html" . }}
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
-          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
-          crossorigin="anonymous"></script>
 
   {{ range $.Site.Params.customJs -}}
   <script src="{{ . | relURL }}"></script>

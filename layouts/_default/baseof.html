@@ -15,6 +15,13 @@
 
   {{ partial "seo.html" . }}
 
+  <link rel="preload" href="{{ `css/print.css` | relURL }}" as="style">
+  <link rel="preload" href="{{ `css/poole.css` | relURL }}" as="style">
+  <link rel="preload" href="{{ `css/hyde.css` | relURL }}" as="style">
+
+  <link rel="preload" href="{{ `fonts/open-sans-v20-latin-regular.woff2` | relURL }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ `fonts/open-sans-v20-latin-700.woff2` | relURL }}" as="font" type="font/woff2" crossorigin>
+
   <link type="text/css"
         rel="stylesheet"
         href="{{ `css/print.css` | relURL }}"
@@ -33,9 +40,6 @@
   {{ range $.Site.Params.customCss -}}
   <link type="text/css" rel="stylesheet" href="{{ . | relURL }}">
   {{- end}}
-
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
 
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"

@@ -1,0 +1,30 @@
+{{- $alt := .Text -}}
+{{- $src := .Destination -}}
+{{- $title := .Title -}}
+
+{{- if strings.HasPrefix $src "/images/" -}}
+  {{- $imagePath := strings.TrimPrefix "/images/" $src -}}
+  {{- $image := resources.Get (printf "images/%s" $imagePath) -}}
+
+  {{- if $image -}}
+    {{- $small := $image.Resize "400x webp" -}}
+    {{- $medium := $image.Resize "800x webp" -}}
+    {{- $large := $image.Resize "1200x webp" -}}
+
+    <img
+      src="{{ $medium.RelPermalink }}"
+      srcset="{{ $small.RelPermalink }} 400w,
+              {{ $medium.RelPermalink }} 800w,
+              {{ $large.RelPermalink }} 1200w"
+      sizes="(max-width: 768px) 100vw,
+             (max-width: 1200px) 800px,
+             1200px"
+      alt="{{ $alt }}"
+      {{- with $title }} title="{{ . }}"{{ end }}
+      loading="lazy">
+  {{- else -}}
+    <img src="{{ $src }}" alt="{{ $alt }}"{{- with $title }} title="{{ . }}"{{ end }} loading="lazy">
+  {{- end -}}
+{{- else -}}
+  <img src="{{ $src }}" alt="{{ $alt }}"{{- with $title }} title="{{ . }}"{{ end }} loading="lazy">
+{{- end -}}
